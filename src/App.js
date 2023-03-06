@@ -1,42 +1,60 @@
-import React from 'react';
+import { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 // import Logo from './image/crypto.png';
-import Logo1 from './image/logp.jpg';
+//import Logo1 from './image/logp.jpg';
 import Bitcoin from "./image/bitcoin.jpg"
+import navlogo from "./image/navlogo1.jpg"
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 
 import {
-  Button,
   
   Col,
   Nav,
    Navbar,
     Row}
      from 'react-bootstrap';  
-function App() {  
-  return ( 
-    
+function App() {
+  
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
     <div>
     <Row>
       <Col>
-    <Navbar id="navbar-top" expand="lg" className="fixed-top">     
-      <Navbar.Brand href="#home">
-        <img src={Logo1} alt="logo" width="50"
-              height="50" className="d-inline-block align-top"/>
-      </Navbar.Brand>
-      <Navbar.Toggle  aria-controls="basic-navbar-nav" />  
-      <Navbar.Collapse bg="warning" id="basic-navbar-nav">  
-        <Nav className="me-auto">  
+      
+
+
+      <Offcanvas show={show} onHide={handleClose} responsive="lg">
+        <Offcanvas.Header closeButton="btn-btn">
+          <Offcanvas.Title>company logo</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <Navbar bg="" variant="dark">
+        
+          <Navbar.Brand>
+          <img id="logo"src={navlogo} alt="Crpto" width="250" height="100"/>
+          </Navbar.Brand>
+      
+      </Navbar>
           <Nav.Link href="#home" id='Navbarlinks'>Home</Nav.Link>  
           <Nav.Link href="#link" id='Navbarlinks'>Project</Nav.Link>  
            <Nav.Link href="#home" id='Navbarlinks'>Company</Nav.Link>  
-          <Nav.Link href="#link" id='Navbarlinks'>Blog</Nav.Link>   
-        </Nav>  
-      </Navbar.Collapse> 
-  </Navbar> 
-  </Col>
-  </Row>
-  
+          <Nav.Link href="#link" id='Navbarlinks'>Blog</Nav.Link> 
+        </Offcanvas.Body>
+      </Offcanvas>
+      <Button variant="primary" className="d-lg-none" onClick={handleShow}>
+        Launch
+      </Button>
+
+        </Col>
+        </Row>
+         
+    
     <Row id='text'>
       <Col lg={"6"} >
       <Row>
